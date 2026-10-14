@@ -1,9 +1,12 @@
 "use client";
 
-import { property } from "@/content/site";
+import { photos, property } from "@/content/site";
 import { useI18n } from "@/components/Language";
+import { PlainPhoto } from "@/components/PlainPhoto";
 import { Reveal } from "@/components/Reveal";
-import { Container, Eyebrow, Value, buttonClass } from "@/components/ui";
+import { Value, buttonClass } from "@/components/ui";
+
+const accents = ["border-olive", "border-saffron", "border-bronze", "border-olive", "border-saffron", "border-bronze"];
 
 export function PropertyOverview() {
   const { t } = useI18n();
@@ -21,42 +24,38 @@ export function PropertyOverview() {
   ];
 
   return (
-    <section id="property" className="py-24 md:py-32 lg:py-40">
-      <Container>
-        <Reveal>
-          <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-6">
-              <Eyebrow>{t.intro.eyebrow}</Eyebrow>
-              <h2 className="mt-4 max-w-[12ch] font-serif text-5xl font-medium leading-[1.02] tracking-[-0.02em] sm:text-6xl">
-                {t.intro.heading}
-              </h2>
-              <p className="mt-8 max-w-xl text-ink/85">{t.intro.body}</p>
-              <a href="#contact" className={`${buttonClass("primary")} mt-10 w-full sm:w-auto`}>
-                {t.intro.cta}
-              </a>
-            </div>
-
-            <div className="lg:col-span-6 lg:pt-10">
-              <dl>
-                {rows.map((row) => (
-                  <div
-                    key={row.label}
-                    className="grid grid-cols-1 gap-1 border-t border-line py-4 sm:grid-cols-[11rem_1fr] sm:gap-6 sm:py-5"
-                  >
-                    <dt className="text-[0.72rem] uppercase tracking-[0.16em] text-muted">
-                      {row.label}
-                    </dt>
-                    <dd className="text-lg text-charcoal">
-                      <Value value={row.value} fallback={t.pending} />
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-              <p className="mt-4 text-sm text-muted">{t.intro.italicNote}</p>
-            </div>
+    <section id="property" className="bg-mint">
+      <Reveal>
+        <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-20">
+          <PlainPhoto
+            src={photos.plots.src}
+            alt={photos.plots.alt}
+            sizes="(min-width: 1024px) 540px, 100vw"
+            className="aspect-[4/3] w-full"
+          />
+          <div>
+            <h2 className="max-w-[14ch] font-serif text-4xl font-medium leading-[1.15] sm:text-5xl">
+              {t.intro.heading}
+            </h2>
+            <dl className="mt-8 space-y-3">
+              {rows.map((row, index) => (
+                <div
+                  key={row.label}
+                  className={`flex items-baseline justify-between gap-4 border-l-4 bg-paper px-4 py-3 ${accents[index]}`}
+                >
+                  <dt className="text-[0.68rem] uppercase tracking-[0.14em] text-muted">{row.label}</dt>
+                  <dd className="text-right">
+                    <Value value={row.value} fallback={t.pending} />
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <a href="#contact" className={`${buttonClass("primary")} mt-8`}>
+              {t.intro.cta}
+            </a>
           </div>
-        </Reveal>
-      </Container>
+        </div>
+      </Reveal>
     </section>
   );
 }

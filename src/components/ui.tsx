@@ -26,7 +26,7 @@ export function Eyebrow({
 }) {
   return (
     <p
-      className={`text-[0.72rem] uppercase tracking-[0.22em] text-bronze ${className}`}
+      className={`text-[0.68rem] uppercase tracking-[0.2em] text-olive ${className}`}
     >
       {children}
     </p>
@@ -49,19 +49,19 @@ export function Value({
 }
 
 const buttonBase =
-  "inline-flex items-center justify-center px-6 py-3.5 text-[0.98rem] tracking-wide transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px]";
+  "inline-flex items-center justify-center px-5 py-3 text-sm tracking-wide transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px]";
 
 export function buttonClass(
   variant: "primary" | "secondary" | "secondary-light" | "ghost",
 ) {
   if (variant === "primary") {
-    return `${buttonBase} bg-olive text-ivory hover:bg-olive-deep focus-visible:outline-bronze`;
+    return `${buttonBase} bg-saffron text-charcoal hover:bg-[#e09a10] focus-visible:outline-olive`;
   }
   if (variant === "secondary-light") {
-    return `${buttonBase} border border-ivory/45 text-ivory hover:bg-ivory hover:text-charcoal focus-visible:outline-ivory`;
+    return `${buttonBase} border border-ivory/40 text-ivory hover:bg-ivory hover:text-charcoal focus-visible:outline-ivory`;
   }
   if (variant === "ghost") {
-    return `${buttonBase} border border-line text-charcoal hover:border-charcoal focus-visible:outline-bronze`;
+    return `${buttonBase} border border-line text-charcoal hover:border-charcoal focus-visible:outline-charcoal`;
   }
-  return `${buttonBase} border border-charcoal/25 text-charcoal hover:border-charcoal focus-visible:outline-bronze`;
+  return `${buttonBase} border border-charcoal/20 text-charcoal hover:border-charcoal focus-visible:outline-charcoal`;
 }

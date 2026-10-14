@@ -1,9 +1,10 @@
 "use client";
 
-import { locationInfo, mapEmbedUrl } from "@/content/site";
+import { locationInfo, mapEmbedUrl, photos } from "@/content/site";
 import { useI18n } from "@/components/Language";
+import { PlainPhoto } from "@/components/PlainPhoto";
 import { Reveal } from "@/components/Reveal";
-import { Container, Eyebrow, Value } from "@/components/ui";
+import { Value } from "@/components/ui";
 
 export function LocationSection() {
   const { t } = useI18n();
@@ -15,91 +16,56 @@ export function LocationSection() {
   );
 
   return (
-    <section id="location" className="border-t border-line py-24 md:py-32 lg:py-40">
-      <Container>
-        <Reveal>
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
-            <div className="lg:col-span-5">
-              <Eyebrow>{t.location.eyebrow}</Eyebrow>
-              <h2 className="mt-4 font-serif text-5xl font-medium leading-[1.02] tracking-[-0.02em] sm:text-6xl">
-                {t.location.heading}
-              </h2>
-              <p className="mt-8 text-ink/85">{address ? t.location.known : t.location.pending}</p>
-
-              <div className="mt-10 border-t border-line pt-6">
-                <p className="text-[0.72rem] uppercase tracking-[0.16em] text-muted">
-                  {t.location.propertyLocation}
-                </p>
-                <p className="mt-3 font-serif text-3xl leading-snug">
-                  <Value value={address} fallback={t.pending} />
-                </p>
-              </div>
-
-              {nearby.length > 0 ? (
-                <div className="mt-10">
-                  <h3 className="text-[0.72rem] uppercase tracking-[0.16em] text-muted">
-                    {t.location.nearby}
-                  </h3>
-                  <ul className="mt-4 divide-y divide-line border-y border-line">
-                    {nearby.map((item) => (
-                      <li
-                        key={`${item.name}-${item.detail}`}
-                        className="flex items-baseline justify-between gap-6 py-3"
-                      >
-                        <span>{item.name}</span>
-                        <span className="text-right text-muted">{item.detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-
-              {connectivity.length > 0 ? (
-                <div className="mt-10">
-                  <h3 className="text-[0.72rem] uppercase tracking-[0.16em] text-muted">
-                    {t.location.connectivity}
-                  </h3>
-                  <ul className="mt-4 divide-y divide-line border-y border-line">
-                    {connectivity.map((item) => (
-                      <li
-                        key={`${item.name}-${item.detail}`}
-                        className="flex items-baseline justify-between gap-6 py-3"
-                      >
-                        <span>{item.name}</span>
-                        <span className="text-right text-muted">{item.detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-            </div>
-
-            <div className="lg:col-span-7">
-              {map ? (
-                <iframe
-                  title={t.location.mapFrame}
-                  src={map}
-                  className="h-[420px] w-full border border-line lg:h-full lg:min-h-[520px]"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              ) : (
-                <div className="flex h-[420px] flex-col justify-between border border-line bg-stone/70 p-6 sm:p-8 lg:min-h-[520px]">
-                  <p className="text-[0.72rem] uppercase tracking-[0.18em] text-muted">
-                    {t.location.map}
-                  </p>
-                  <div>
-                    <p className="max-w-[16ch] font-serif text-4xl leading-[1.05] text-charcoal sm:text-5xl">
-                      {t.location.mapTitle}
-                    </p>
-                    <p className="mt-4 max-w-md text-sm text-muted">{t.location.mapNote}</p>
-                  </div>
-                </div>
-              )}
-            </div>
+    <section id="location" className="bg-sky">
+      <Reveal>
+        <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-20">
+          <div className="bg-paper px-6 py-8 sm:px-8">
+            <h2 className="font-serif text-4xl font-medium leading-tight">{t.location.heading}</h2>
+            <p className="mt-6 text-[0.68rem] uppercase tracking-[0.16em] text-muted">
+              {t.location.propertyLocation}
+            </p>
+            <p className="mt-2 font-serif text-2xl">
+              <Value value={address} fallback={t.pending} />
+            </p>
+            {nearby.length > 0 ? (
+              <ul className="mt-6 divide-y divide-line border-t border-line">
+                {nearby.map((item) => (
+                  <li key={`${item.name}-${item.detail}`} className="flex justify-between gap-4 py-3">
+                    <span>{item.name}</span>
+                    <span className="text-muted">{item.detail}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {connectivity.length > 0 ? (
+              <ul className="divide-y divide-line border-t border-line">
+                {connectivity.map((item) => (
+                  <li key={`${item.name}-${item.detail}`} className="flex justify-between gap-4 py-3">
+                    <span>{item.name}</span>
+                    <span className="text-muted">{item.detail}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
-        </Reveal>
-      </Container>
+          {map ? (
+            <iframe
+              title={t.location.mapFrame}
+              src={map}
+              className="aspect-[4/3] w-full"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          ) : (
+            <PlainPhoto
+              src={photos.fields.src}
+              alt={photos.fields.alt}
+              sizes="(min-width: 1024px) 540px, 100vw"
+              className="aspect-[4/3] w-full"
+            />
+          )}
+        </div>
+      </Reveal>
     </section>
   );
 }

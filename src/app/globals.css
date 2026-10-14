@@ -1,17 +1,21 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-ivory: #f3efe7;
-  --color-paper: #f7f4ee;
-  --color-stone: #e5dfd2;
-  --color-charcoal: #1c1b18;
-  --color-ink: #2c2a26;
-  --color-muted: #5c564e;
-  --color-olive: #3c4634;
-  --color-olive-deep: #2a3226;
-  --color-bronze: #7a654c;
-  --color-line: rgba(28, 27, 24, 0.14);
-  --color-danger: #7a3e32;
+  --color-ivory: #fbf8f2;
+  --color-paper: #ffffff;
+  --color-stone: #f3e6cf;
+  --color-charcoal: #243028;
+  --color-ink: #3a463c;
+  --color-muted: #5f6b5e;
+  --color-olive: #24964f;
+  --color-olive-deep: #1b7a40;
+  --color-bronze: #e07d45;
+  --color-saffron: #f0b429;
+  --color-gold: #ffe7a3;
+  --color-mint: #e7f8ee;
+  --color-sky: #dff3fb;
+  --color-line: rgba(36, 48, 40, 0.14);
+  --color-danger: #c23b32;
   --font-sans: var(--font-source), "Source Sans 3", sans-serif;
   --font-serif: var(--font-display), "Iowan Old Style", Georgia, serif;
 }
@@ -32,7 +36,7 @@ body {
   color: var(--color-charcoal);
   font-family: var(--font-sans);
   font-size: 1.0625rem;
-  line-height: 1.65;
+  line-height: 1.7;
   text-rendering: optimizeLegibility;
 }
 
@@ -58,12 +62,12 @@ html[data-lang="hi"] .uppercase {
 }
 
 ::selection {
-  background: #3c4634;
-  color: #f3efe7;
+  background: #24964f;
+  color: #fbf8f2;
 }
 
 :focus-visible {
-  outline: 2px solid #7a654c;
+  outline: 2px solid #f0b429;
   outline-offset: 3px;
 }
 

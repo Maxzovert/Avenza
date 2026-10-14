@@ -1,9 +1,10 @@
 "use client";
 
-import { company } from "@/content/site";
+import { company, photos } from "@/content/site";
 import { useI18n } from "@/components/Language";
+import { PlainPhoto } from "@/components/PlainPhoto";
 import { Reveal } from "@/components/Reveal";
-import { Container, Eyebrow } from "@/components/ui";
+import { Eyebrow } from "@/components/ui";
 
 export function AboutCompany() {
   const { t } = useI18n();
@@ -15,37 +16,30 @@ export function AboutCompany() {
   ];
 
   return (
-    <section id="about" className="pt-24 md:pt-32 lg:pt-40">
-      <Container>
-        <Reveal>
-          <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-4">
-              <Eyebrow>{t.about.eyebrow}</Eyebrow>
-              <dl className="mt-8 border-t border-line">
-                {record.map((item) => (
-                  <div key={item.label} className="border-b border-line py-4">
-                    <dt className="text-[0.72rem] uppercase tracking-[0.16em] text-muted">
-                      {item.label}
-                    </dt>
-                    <dd className="mt-1.5">{item.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-            <div className="lg:col-span-7 lg:col-start-6">
-              <h2 className="font-serif text-5xl font-medium leading-[1.02] tracking-[-0.02em] sm:text-6xl">
-                {t.about.heading}
-              </h2>
-              <div className="mt-8 space-y-5 text-ink/85">
-                {t.about.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-              <p className="mt-8 text-sm text-muted">{t.about.sourceNote}</p>
-            </div>
+    <section id="about" className="bg-ivory">
+      <Reveal>
+        <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-20">
+          <PlainPhoto
+            src={photos.pin.src}
+            alt={photos.pin.alt}
+            sizes="(min-width: 1024px) 480px, 100vw"
+            className="aspect-[4/3] w-full"
+          />
+          <div className="bg-paper px-6 py-8 sm:px-8">
+            <Eyebrow>{t.about.eyebrow}</Eyebrow>
+            <h2 className="mt-3 font-serif text-4xl font-medium leading-tight">{t.about.heading}</h2>
+            <dl className="mt-8">
+              {record.map((item) => (
+                <div key={item.label} className="border-t border-line py-3">
+                  <dt className="text-[0.68rem] uppercase tracking-[0.14em] text-muted">{item.label}</dt>
+                  <dd className="mt-1">{item.value}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-6 text-sm text-muted">{t.about.sourceNote}</p>
           </div>
-        </Reveal>
-      </Container>
+        </div>
+      </Reveal>
     </section>
   );
 }

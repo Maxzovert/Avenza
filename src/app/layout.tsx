@@ -37,7 +37,7 @@ const hindiSerif = Noto_Serif_Devanagari({
 export const metadata: Metadata = rootMetadata();
 
 export const viewport: Viewport = {
-  themeColor: "#1c1b18",
+  themeColor: "#24964f",
   width: "device-width",
   initialScale: 1,
 };

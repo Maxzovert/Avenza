@@ -1,37 +1,29 @@
 "use client";
 
-import { contact, hasText } from "@/content/site";
+import { photos } from "@/content/site";
 import { useI18n } from "@/components/Language";
+import { PlainPhoto } from "@/components/PlainPhoto";
 import { buttonClass } from "@/components/ui";
 
 export function SiteVisitCTA() {
   const { t } = useI18n();
-  const phone = contact.phone.trim();
 
   return (
-    <section id="visit" className="bg-charcoal text-ivory">
-      <div className="mx-auto grid max-w-[1360px] gap-10 px-5 py-24 sm:px-8 md:py-32 lg:grid-cols-12 lg:items-end lg:py-36">
-        <div className="lg:col-span-8">
-          <h2 className="max-w-[14ch] font-serif text-5xl font-medium leading-[0.98] tracking-[-0.02em] sm:text-7xl">
+    <section id="visit" className="bg-olive text-ivory">
+      <div className="mx-auto grid max-w-[1180px] items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-20">
+        <PlainPhoto
+          src={photos.farmland.src}
+          alt={photos.farmland.alt}
+          className="aspect-[4/3] w-full"
+          sizes="(min-width: 1024px) 540px, 100vw"
+        />
+        <div>
+          <h2 className="max-w-[14ch] font-serif text-4xl font-medium leading-[1.15] sm:text-5xl">
             {t.visit.heading}
           </h2>
-          <p className="mt-8 max-w-md font-serif text-2xl italic text-ivory/75 sm:text-3xl">
-            {t.visit.body}
-          </p>
-        </div>
-        <div className="flex flex-col gap-3 sm:flex-row lg:col-span-4 lg:flex-col lg:items-stretch">
-          <a href="#contact" className={`${buttonClass("primary")} w-full`}>
+          <a href="#contact" className={`${buttonClass("primary")} mt-8`}>
             {t.visit.schedule}
           </a>
-          {hasText(phone) ? (
-            <a href={`tel:${phone.replace(/\s/g, "")}`} className={`${buttonClass("secondary-light")} w-full`}>
-              {t.visit.talk}
-            </a>
-          ) : (
-            <a href="#contact" className={`${buttonClass("secondary-light")} w-full`}>
-              {t.visit.talk}
-            </a>
-          )}
         </div>
       </div>
     </section>

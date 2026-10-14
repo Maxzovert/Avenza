@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { company, propertyDocuments } from "@/content/site";
+import { company, photos, propertyDocuments } from "@/content/site";
 import { useI18n } from "@/components/Language";
+import { PlainPhoto } from "@/components/PlainPhoto";
 import { Reveal } from "@/components/Reveal";
-import { Container, Eyebrow, buttonClass } from "@/components/ui";
+import { buttonClass } from "@/components/ui";
 
 export function DocumentsSection() {
   const { t } = useI18n();
@@ -19,21 +20,22 @@ export function DocumentsSection() {
   ];
 
   return (
-    <section id="documents" className="border-t border-line bg-[#e9e3d6] py-24 md:py-32 lg:py-40">
-      <Container>
+    <section id="documents" className="bg-ivory py-16 md:py-20">
+      <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
         <Reveal>
-          <Eyebrow>{t.documents.eyebrow}</Eyebrow>
-          <h2 className="mt-4 max-w-[16ch] font-serif text-5xl font-medium leading-[1.02] tracking-[-0.02em] sm:text-6xl">
-            {t.documents.heading}
-          </h2>
-          <p className="mt-8 max-w-2xl text-ink/85">{t.documents.body}</p>
-
-          <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <article className="border border-line bg-paper p-7 sm:p-10">
-              <p className="text-[0.72rem] uppercase tracking-[0.18em] text-bronze">
+          <PlainPhoto
+            src={photos.openLand.src}
+            alt={photos.openLand.alt}
+            sizes="(min-width: 1024px) 540px, 100vw"
+            className="aspect-[4/3] w-full"
+          />
+        </Reveal>
+        <Reveal>
+            <article>
+              <p className="text-[0.68rem] uppercase tracking-[0.16em] text-muted">
                 {t.documents.company}
               </p>
-              <h3 className="mt-4 font-serif text-3xl font-medium leading-tight">
+              <h3 className="mt-3 font-serif text-3xl font-medium leading-tight">
                 {t.documents.certificate}
               </h3>
               <dl className="mt-8">
@@ -58,12 +60,12 @@ export function DocumentsSection() {
               </Link>
             </article>
 
-            <div>
-              <h3 className="font-serif text-3xl font-medium">{t.documents.propertyDocs}</h3>
-              {papers.length > 0 ? (
-                <ul className="mt-6 divide-y divide-line border-y border-line">
+            {papers.length > 0 ? (
+              <div className="mt-10">
+                <h3 className="font-serif text-2xl font-medium">{t.documents.propertyDocs}</h3>
+                <ul className="mt-4 divide-y divide-line border-y border-line">
                   {papers.map((item) => (
-                    <li key={item.href} className="py-5">
+                    <li key={item.href} className="py-4">
                       <a
                         href={item.href}
                         className="font-medium hover:text-olive"
@@ -76,13 +78,10 @@ export function DocumentsSection() {
                     </li>
                   ))}
                 </ul>
-              ) : (
-                <p className="mt-6 max-w-md text-ink/85">{t.documents.propertyEmpty}</p>
-              )}
-            </div>
-          </div>
+              </div>
+            ) : null}
         </Reveal>
-      </Container>
+      </div>
     </section>
   );
 }

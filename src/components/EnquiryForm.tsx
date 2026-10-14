@@ -1,8 +1,9 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
-import { company, contact, hasText, whatsappHref } from "@/content/site";
+import { company, contact, hasText, photos, whatsappHref } from "@/content/site";
 import { useI18n } from "@/components/Language";
+import { PlainPhoto } from "@/components/PlainPhoto";
 import { buttonClass } from "@/components/ui";
 import type { Messages } from "@/content/messages";
 
@@ -143,20 +144,19 @@ export function EnquiryForm() {
   };
 
   const inputClass =
-    "mt-2 w-full border border-line bg-paper px-3 py-3 text-charcoal outline-none transition-colors focus:border-olive";
+    "mt-2 w-full border border-line bg-ivory px-3 py-2.5 text-charcoal outline-none transition-colors focus:border-charcoal";
 
   return (
-    <section id="contact" className="scroll-mt-24 py-24 md:py-32 lg:py-40">
-      <div className="mx-auto grid max-w-[1120px] gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-16">
+    <section id="contact" className="scroll-mt-24 bg-ivory">
+      <div className="mx-auto grid max-w-[1180px] gap-12 px-5 py-16 sm:px-8 md:py-24 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
-          <p className="text-[0.72rem] uppercase tracking-[0.22em] text-bronze">{copy.eyebrow}</p>
-          <h2 className="mt-4 font-serif text-5xl font-medium leading-[1.02] tracking-[-0.02em] sm:text-6xl">
+          <p className="text-[0.68rem] uppercase tracking-[0.2em] text-muted">{copy.eyebrow}</p>
+          <h2 className="mt-3 font-serif text-[2.35rem] font-medium leading-[1.15] tracking-[-0.02em] sm:text-5xl">
             {copy.heading}
           </h2>
-          <p className="mt-6 text-ink/85">{copy.body}</p>
 
           <div className="mt-10 border-t border-line pt-6 text-sm">
-            <p className="text-[0.72rem] uppercase tracking-[0.16em] text-muted">{copy.office}</p>
+            <p className="text-[0.68rem] uppercase tracking-[0.16em] text-muted">{copy.office}</p>
             <p className="mt-2">{t.facts.registeredOffice}</p>
             {hasText(contact.phone) ? (
               <p className="mt-4">
@@ -177,6 +177,13 @@ export function EnquiryForm() {
                 {copy.whatsapp}
               </a>
             ) : null}
+            <PlainPhoto
+              src={photos.letters.src}
+              alt={photos.letters.alt}
+              sizes="420px"
+              imageClassName="object-bottom"
+              className="mt-16 aspect-[4/3] w-full max-w-[420px]"
+            />
           </div>
         </div>
 

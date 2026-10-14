@@ -8,8 +8,10 @@ export function Directors() {
   const { t } = useI18n();
   const people = directors.filter((person) => person.name.trim() && person.designation.trim());
 
+  if (people.length === 0) return null;
+
   return (
-    <section id="directors" aria-labelledby="directors-heading" className="pb-24 md:pb-32">
+    <section id="directors" aria-labelledby="directors-heading" className="border-t border-line bg-paper pb-16 md:pb-24">
       <Container>
         <div className="grid lg:grid-cols-12">
           <div className="lg:col-span-7 lg:col-start-6">

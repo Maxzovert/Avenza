@@ -1,3 +1,13 @@
+import mainLand from "@/assets/main.jpg";
+import approachRoad from "@/assets/1.jpeg";
+import markedPlots from "@/assets/2.jpeg";
+import openPlot from "@/assets/3.jpg";
+import plotPin from "@/assets/11.webp";
+import markedFields from "@/assets/12.jpg";
+import plotLetters from "@/assets/13.jpg";
+import openLand from "@/assets/14.jpg";
+import farmland from "@/assets/15.jpg";
+
 /**
  * AVENZA REALTECH — site content
  *
@@ -6,8 +16,7 @@
  * “To be confirmed” rather than invent a figure.
  *
  * Do not add PAN, TAN, or any other tax identifier.
- * Do not point images at stock photography of a different place.
- * Photographs belong in `public/images/` and are referenced as `/images/filename.jpg`.
+ * Plot photographs live in `src/assets/` and are imported at the top of this file.
  */
 
 export const company = {
@@ -28,6 +37,18 @@ export const company = {
    * Leave empty until the actual certificate file is added.
    */
   certificatePdf: "",
+} as const;
+
+export const photos = {
+  main: { src: mainLand.src, alt: "Green fields with a marked plot" },
+  plots: { src: markedPlots.src, alt: "Plots marked with low brick boundaries" },
+  openPlot: { src: openPlot.src, alt: "An open plot with a brick edge along the road" },
+  road: { src: approachRoad.src, alt: "A paved road running between open plots" },
+  fields: { src: markedFields.src, alt: "Green fields with a marked area" },
+  openLand: { src: openLand.src, alt: "Open land seen from above" },
+  farmland: { src: farmland.src, alt: "Farmland beside a road" },
+  pin: { src: plotPin.src, alt: "A marked plot on a green layout" },
+  letters: { src: plotLetters.src, alt: "The word plot spelled in wooden blocks" },
 } as const;
 
 export const property = {
@@ -56,48 +77,10 @@ export const property = {
    * src example: "/images/land-approach.jpg"
    */
   heroImage: {
-    src: "",
-    alt: "",
+    src: photos.main.src,
+    alt: photos.main.alt,
   },
 };
-
-export type GalleryImage = {
-  src: string;
-  alt: string;
-  category: string;
-};
-
-/**
- * Replace `src` and `alt` when a real photograph exists.
- * Empty `src` keeps an honest placeholder. Do not use a picture of another site.
- */
-export const gallery: GalleryImage[] = [
-  {
-    src: "",
-    alt: "",
-    category: "Property",
-  },
-  {
-    src: "",
-    alt: "",
-    category: "Road / Approach",
-  },
-  {
-    src: "",
-    alt: "",
-    category: "Surroundings",
-  },
-  {
-    src: "",
-    alt: "",
-    category: "Nearby Area",
-  },
-  {
-    src: "",
-    alt: "",
-    category: "Location",
-  },
-];
 
 export type Fact = {
   label: string;

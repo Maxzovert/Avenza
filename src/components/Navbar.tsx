@@ -76,10 +76,8 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
             aria-label={`${company.legalName}, ${t.nav.home}`}
             onClick={() => setOpen(false)}
           >
-            <span className="block font-serif text-[1.35rem] tracking-[0.12em]">
-              AVENZA
-            </span>
-            <span className="mt-1 block text-[0.62rem] uppercase tracking-[0.28em]">
+            <span className="block font-serif text-xl tracking-[0.18em] text-olive">AVENZA</span>
+            <span className="mt-1 block text-[0.58rem] uppercase tracking-[0.28em] text-olive">
               Realtech
             </span>
           </Link>
@@ -89,7 +87,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-[0.95rem] text-current/80 transition-colors hover:text-current"
+                className="text-sm text-current/75 transition-colors hover:text-current"
               >
                 {navLabels[index]}
               </Link>
@@ -125,6 +123,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
             </button>
           </div>
         </div>
+        <div className="h-1 bg-saffron" aria-hidden="true" />
       </header>
 
       <div
@@ -137,7 +136,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
             <Link
               key={item.href}
               href={item.href}
-              className="border-b border-line py-4 font-serif text-4xl"
+              className="border-b border-line py-4 text-2xl"
               onClick={() => setOpen(false)}
             >
               {navLabels[index]}
