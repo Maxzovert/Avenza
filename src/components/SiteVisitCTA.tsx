@@ -10,18 +10,17 @@ export function SiteVisitCTA() {
 
   return (
     <section id="visit" className="bg-olive text-ivory">
-      <div className="mx-auto grid max-w-[1180px] items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-20">
+      <div className="mx-auto grid max-w-[1240px] items-center gap-8 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-14">
         <PlainPhoto
-          src={photos.farmland.src}
-          alt={photos.farmland.alt}
-          className="aspect-[4/3] w-full"
-          sizes="(min-width: 1024px) 540px, 100vw"
+          src={photos.road.src}
+          alt={photos.road.alt}
+          className="aspect-[4/3] min-h-[220px] w-full border-4 border-gold"
+          sizes="(min-width: 1024px) 560px, 100vw"
         />
         <div>
-          <h2 className="max-w-[14ch] font-serif text-4xl font-medium leading-[1.15] sm:text-5xl">
-            {t.visit.heading}
-          </h2>
-          <a href="#contact" className={`${buttonClass("primary")} mt-8`}>
+          <h2 className="font-serif text-3xl font-bold leading-tight sm:text-4xl">{t.visit.heading}</h2>
+          <p className="mt-4 text-lg leading-relaxed text-ivory/95">{t.visit.body}</p>
+          <a href="#contact" className={`${buttonClass("secondary")} mt-6`}>
             {t.visit.schedule}
           </a>
         </div>

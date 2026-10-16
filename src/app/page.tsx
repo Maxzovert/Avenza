@@ -6,9 +6,10 @@ import { EnquiryForm } from "@/components/EnquiryForm";
 import { Hero } from "@/components/Hero";
 import { LocationSection } from "@/components/LocationSection";
 import { PropertyDetails } from "@/components/PropertyDetails";
+import { PropertyGallery } from "@/components/PropertyGallery";
 import { PropertyOverview } from "@/components/PropertyOverview";
+import { WhyThisProperty } from "@/components/WhyThisProperty";
 import { SiteFrame } from "@/components/SiteFrame";
-import { SiteVisitCTA } from "@/components/SiteVisitCTA";
 import { listingJsonLd } from "@/content/seo";
 
 export const metadata: Metadata = {
@@ -22,7 +23,7 @@ export default function HomePage() {
     : null;
 
   return (
-    <SiteFrame>
+    <SiteFrame overlay>
       {listingJson ? (
         <script
           type="application/ld+json"
@@ -32,12 +33,13 @@ export default function HomePage() {
       <main>
         <Hero />
         <PropertyOverview />
+        <PropertyGallery />
         <PropertyDetails />
         <LocationSection />
+        <WhyThisProperty />
         <DocumentsSection />
         <AboutCompany />
         <Directors />
-        <SiteVisitCTA />
         <EnquiryForm />
       </main>
     </SiteFrame>
